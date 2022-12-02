@@ -90,3 +90,126 @@ Identique au processus pour Antilles-Guyane.
 | X | 10          | Valeur de l’abscisse exprimée avec 2 décimales (dans la projection choisie) |
 | Y | 10          | Valeur de l’ordonnée exprimée avec 2 décimales (dans la projection choisie) |
 | depcom | 5          | Code commune |
+
+## BD TOPO
+
+Documentation générale : 
+
+Les évolutions du produit sont décrites dans des documents spécifiques nommés :
+
+- « Suivi des évolutions à partir de la version 3.0 » ;
+- « Suivi des évolutions de la version 1.0 à la version 3.0 » ;
+- « Suivi des évolutions du descriptif de livraison ».
+
+La BD TOPO est la modélisation 3D du territoire et de ses infrastructures. Précision métrique. Les objets de la BD TOPO sont regroupés par thèmes guidés :
+
+- Limites et unités administratives
+- Adresses postales
+- Constructions
+- Éléments ayant trait à l’eau
+- Lieu ou lieu-dit possédant un toponyme et décrivant un espace naturel ou un lieu habité
+- Végétation, estran
+- Services publics, stockage et transport des sources d'énergie, lieux et sites industriels
+- Infrastructures du réseau routier, ferré et aérien
+- Zonages faisant l'objet de réglementations spécifiques
+
+### Mise à jour
+
+L’actualité des informations est définie par le décalage entre les données de la BD TOPO (J+1) et le terrain nominal à une date T. L’actualité décrit la « fraîcheur » des données. Le rythme de disponibilité peut varier :
+
+- J+1
+- trimestriel ;
+- annuel.
+
+De nombreux thèmes de la BD TOPO sont mis à jour en continu ; leur exhaustivité est consolidée lors des processus cycliques variant selon les thèmes : restitution photogrammétrique, exploitation de différentiels issus de sources partenariales. La mise à jour du thème bâti suit le cycle de mise à jour des prises de vues aériennes (de 3 à 4 ans) mais des mises à jour intermédiaires pour les bâtiments sont possibles, notamment à partir du cadastre.
+
+### Enrichissement
+
+Le thème Bâti qui intègre progressivement depuis 2008 les bâtiments du cadastre, donnant à ce thème une granularité plus importante, c'est-à-dire une description plus fine des bâtiments (contour plus précis, découpage plus important). Cette intégration se fait au fur et à
+mesure : la BD TOPO actuelle fait coexister des bâtiments initialement dans la BD TOPO et des bâtiments intégrés à partir des données du cadastre.
+
+### Exhaustivité
+
+Exigence de 95% sur le bâti.
+
+### Variables
+
+Voir le document sur le site de l'IGN. Variables qui peuvent nous intéresser :
+
+- Date d'apparition, de confirmation, de création ;
+- Etat de l'objet ;
+- Fictif ;
+- Graphie du toponyme ;
+- Nature de l'objet ;
+- Toponyme ;
+
+Liste des classes pour le bâti :
+
+- BATIMENT : classe qui nous intéresse
+- CIMETIERE
+- CONSTRUCTION LINEAIRE
+- CONSTRUCTION PONCTUELLE
+- CONSTRUCTION SURFACIQUE
+- LIGNE OROGRAPHIQUE
+- PYLONE
+- RESERVOIR
+- TERRAIN DE SPORT
+- TOPONYMIE BATI
+
+Informations sur les bâtiments :
+
+Définition : Construction au-dessus du sol qui est utilisée pour abriter des humains, des animaux, des objets, pour la production de biens économiques ou pour la prestation de services et qui se réfère à toute structure construite ou érigée de façon permanente sur son site.
+Sélection : Initialement, les seuils de sélection des bâtiments étaient les suivants :
+
+- Tous les bâtiments de plus de 50 m² sont inclus.
+- Les bâtiments faisant entre 20 et 50 m² sont sélectionnés en fonction de leur environnement et de leur aspect.
+- Les bâtiments de moins de 20 m² sont représentés par un objet de classe Construction ponctuelle s’ils sont très hauts, ou s’ils sont spécifiquement désignés sur la carte au 1 : 25 000 en cours (ex: antenne, transformateur...).
+
+Après unification de la BD TOPO avec la BD PARCELLAIRE, tous les bâtiments présents dans la dernière édition de la BD PARCELLAIRE® vecteur sont inclus, sauf éventuellement des bâtiments manifestement détruits depuis la date de validité de la BD PARCELLAIRE. Les petits bâtiments de la BD PARCELLAIRE qui représentent des constructions ponctuelles (exemple des transformateurs) ou des constructions linéaires (exemple des murs de remparts) sont saisis avec leur modélisation initiale respective en BD TOPO. Il n’existe plus de seuil minimal pour la superficie des bâtiments.
+
+Cependant, si une nouvelle saisie photogrammétrique a lieu après les phases d’unification du bâti, les nouveaux bâtiments ne posséderont pas la granularité de la BD PARCELLAIRE. Pour la restitution, les seuils de sélection initiaux sont alors appliqués (bâtiments de plus de 50 m² et bâtiments de 20 à 50 m² en fonction de leur environnement et de leur aspect).
+
+Dans les natures proposées pour la classe *bâtiment* : 
+
+- Nature *indifférenciée* : c'est la valeur prise par défaut, chaque fois que l'aspect général d'un bâtiment ne révèle rien de sa
+nature exacte. Regroupement : Bâtiment d'habitation | Bâtiments administratifs | Bâtiment public | Bergerie traditionnelle
+(bâtiment) | Borie | Bungalow | Bureaux | Chalet | Grange (bâtiment) | Immeuble collectif d'habitation | Immeuble |
+Lavoir couvert | Maison | Refuge (bâtiment) | Ferme | Garage individuel | Gymnase (bâtiment) | Gare téléphérique
+ou télésiège (bâtiment) | Aérogare (bâtiment) | Gare (bâtiment). Tous les bâtiments en dur dont l'architecture ou l'aspect n’est
+pas industriel, agricole ou commercial
+- Nature *industriel, agricole ou commercial*
+
+Peut-être que le thème **Lieu ou lieu-dit possédant un toponyme et décrivant un espace naturel ou un lieu habité** peut aussi nous intéresser, notamment pour la classe **zone d'habitation** : "Lieu-dit habité de manière permanente, temporaire mais régulière ou anciennement habité et à l'état de ruines." Notes : A de rares exceptions (habitations de Guyane, site ruiné...), une zone d’habitation doit posséder un toponyme. Le calcul des emprises des zones d'habitation est différent en Guyane où il est issu des zones d'occupation du sol produites dans le cadre du RGG (Référentiel Géographique Guyanais).
+
+Nature particulière : **Habitat temporaire**. Définition : En Guyane française, lieu d'habitat intermittent nommé, régulièrement fréquenté par les habitants ou exploitants de la forêt. Regroupement : Carbet | Habitation intermittente (Guyane) | Maison communautaire (Guyane)
+Sélection : Les carbets (maisons communautaires) habitées de manière intermittente au gré des déplacements des habitants sont retenus s'ils possèdent un toponyme. Valeurs du champ « Nature détaillée » associées : Sans valeur | Carbet.
+
+### Livraisons
+
+Livraisons par département (avec un buffer de 5 km) d'outre-mer disponibles. PostgreSQL (.sql), GeoPackage (.gpkg) ou Shapefile.
+
+Volume approximatif : 2 Go par département pour la BD TOPO complète. Fichier BATIMENT qui nous intéresse a priori ainsi que le fichier ZONE_D_HABITATION.
+
+Métadonnées et suppléments dans des fichiers annexes.
+
+Fichiers sur le portail [géoservices](https://geoservices.ign.fr/documentation/donnees/vecteur/bdtopo)
+
+### Versions
+
+Numéro de version : X.Y, par exemple 3.0 -> 3 est le numéro de version, 0 de sous-version. 
+
+Les classes d’objets peuvent, dans de rares cas; être amenées à changer pour être ajoutées, supprimées, ou modifiées. Dans le cas d’un ajout ou d’une suppression de classe, il s’agit d’une modification de structure d’un thème. Ces changements incrémentent le numéro de sous-version du produit.
+
+Les thèmes peuvent, exceptionnellement; être amenés à changer pour être ajoutés, supprimés, ou modifiés. Dans le cas d’un ajout ou d’une suppression de thème, il s’agit d’une modification de structure du produit. Ces changements incrémentent le numéro de sous-version du produit.
+
+Le numéro de version du produit reste le même si son processus de fabrication est inchangé. À partir de l’édition de mars 2023 (23.1), l’arborescence des données livrées ne contient, quant à elle, que le numéro de version, pas le numéro de sous-version.
+
+La BD TOPO est éditée quatre fois par an.
+
+Pas de gros changements en version 3, qui a débuté en mars 2019. Version 3.0 Bêta à partir d'octobre 2018. Différences avec la version 2.2 antérieure : https://geoservices.ign.fr/sites/default/files/2021-07/SE_BDTOPO_avant_v3-0.pdf. Pas les mêmes classes de bâti, et ZONE_D_HABITATION était avant PAI_ZONE_HABITATION du thème I_ZONE_ACTIVITE.
+
+Pas de gros changements avant ça. En Janvier 2009 changement de projections.
+
+La classe BATIMENT de la version 1.2, très volumineuse (de l’ordre de 300 000 objets par département), a été divisée en plusieurs classes, de façon à faciliter et accélérer les applications tournant sur les bâtiments, en particulier les bâtiments possédant une fonction. En effet, les bâtiments indifférenciés représentent 90% de la totalité des bâtiments, les bâtiments dits remarquables environ 2% et les bâtiments à caractère industriel, agricole ou commercial 10%. Une classe CONSTRUCTION_LEGERE est créée. Les classes autres que « bâtiments » présents dans la version 1.2 se retrouvent dans la version 2.0 (réservoir, cimetière, terrain de sport, ...).
+
+En plus d’une précision planimétrique et géométrique, les bâtiments ont une origine indiquant leur provenance (BDTopo, cadastre, terrain ou autre). Les surfaces et points d’activité ou d’intérêt (PAI) sont regroupés dans un thème à part, pour alléger le thème des bâtiments, d’autant plus qu’il existe de nouveaux types de PAI par rapport à la version 1.2 (voir paragraphe 1.4.2.6 Les zones et points d’activité ou d’intérêt).
