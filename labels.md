@@ -213,3 +213,15 @@ Pas de gros changements avant ça. En Janvier 2009 changement de projections.
 La classe BATIMENT de la version 1.2, très volumineuse (de l’ordre de 300 000 objets par département), a été divisée en plusieurs classes, de façon à faciliter et accélérer les applications tournant sur les bâtiments, en particulier les bâtiments possédant une fonction. En effet, les bâtiments indifférenciés représentent 90% de la totalité des bâtiments, les bâtiments dits remarquables environ 2% et les bâtiments à caractère industriel, agricole ou commercial 10%. Une classe CONSTRUCTION_LEGERE est créée. Les classes autres que « bâtiments » présents dans la version 1.2 se retrouvent dans la version 2.0 (réservoir, cimetière, terrain de sport, ...).
 
 En plus d’une précision planimétrique et géométrique, les bâtiments ont une origine indiquant leur provenance (BDTopo, cadastre, terrain ou autre). Les surfaces et points d’activité ou d’intérêt (PAI) sont regroupés dans un thème à part, pour alléger le thème des bâtiments, d’autant plus qu’il existe de nouveaux types de PAI par rapport à la version 1.2 (voir paragraphe 1.4.2.6 Les zones et points d’activité ou d’intérêt).
+
+## Annotations en général
+
+There are many annotation formats, although PASCAL VOC and coco-json are the most commonly used. I recommend using geojson for storing polygons, then converting these to the required format when needed.
+
+Longue list de softwares d'annotation : https://github.com/robmarkcole/satellite-image-deep-learning, ainsi que des outils pour visualiser les annotations et faire des conversions entre formats.
+
+Des tas de tips et de bonnes pratiques ici aussi : https://github.com/robmarkcole/satellite-image-deep-learning
+
+https://github.com/chrieke/awesome-satellite-imagery-datasets
+
+- https://www.aicrowd.com/challenges/mapping-challenge
